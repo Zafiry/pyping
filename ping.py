@@ -19,14 +19,13 @@ ip = ImpactPacket.IP()
 ip.set_ip_src(src)
 ip.set_ip_dst(dst)
 
-# Create a new ICMP packet of type ECHO.
+# Create a new ICMP packet of type TSTAMP.
 
 icmp = ImpactPacket.ICMP()
 icmp.set_icmp_type(icmp.ICMP_TSTAMP)
 
-# Include a 156-character long payload inside the ICMP packet.
+# Include a 12-character long payload inside the ICMP packet.
 icmp.contains(ImpactPacket.Data('0'*12))
-#icmp.contains(ImpactPacket.Data("A"*156))
 
 # Have the IP packet contain the ICMP packet (along with its payload).
 ip.contains(icmp)
